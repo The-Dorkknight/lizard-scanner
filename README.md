@@ -256,3 +256,11 @@ script `tools/Find-CR-Scan-Calibration.bat` (untested).
   [THIRD_PARTY.md](THIRD_PARTY.md).
 
 Required Notice: Copyright Matthew Armstrong (https://github.com/The-Dorkknight)
+
+## Research paper
+
+**Down the lizard hole: deep dive into the CR scan lizzard's USB and scanning protocols** (version 1.0) · [PDF](docs/paper/down-the-lizard-hole.pdf)
+
+The paper's text and figures: [CC BY-SA 4.0](docs/paper/LICENSE.md)
+
+**How to cite:** Unknown (n.d.). *Down the lizard hole: deep dive into the CR scan lizzard's USB and scanning protocols.* Version 1.0.

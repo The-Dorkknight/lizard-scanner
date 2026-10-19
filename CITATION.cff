@@ -1,0 +1,14 @@
+# Made by Repo Pegboard. GitHub reads this file to show "Cite this repository".
+cff-version: 1.2.0
+message: "If you use this work, please cite the paper below."
+title: "lizard-scanner"
+authors:
+  - name: "Unknown"
+repository-code: "https://github.com/The-Dorkknight/lizard-scanner"
+preferred-citation:
+  type: report
+  title: "Down the lizard hole: deep dive into the CR scan lizzard's USB and scanning protocols"
+  authors:
+    - name: "Unknown"
+  version: "1.0"
+  license: CC-BY-SA-4.0
