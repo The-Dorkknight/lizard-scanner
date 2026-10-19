@@ -1,0 +1,128 @@
+Capture: C:/Users/<user>/WhoAreYoUSB/usb_capture_20261015_172326.pcap  packets: 3650  duration: 62.5s
+Recorded on Windows (USBPcap), root hubs [1, 2], note: -
+
+=== In plain words ===
+* dev2 05e3:0749 USB Mass Storage Device: sent data (no standard video frames found; see 'Data endpoints').
+    - vendor control 1.20 <- 00 00 00 00 cf 02 ff 04 01 00
+* dev4 bcdc:000a ICT CameraA (scanner): sent video for 40s, 380 frames, ~9.6 fps, MJPEG 1280x720.
+    - vendor control 4.10 <- 02 c2 00 fe 14 00 00 00  (then reads an answer)
+    - video mode: format 2 (YUY2), frame size 1 = 640x480, 5.0 fps
+    - video mode: format 1 (MJPEG), frame size 2 = 1280x720, 10.0 fps
+    - set auto-exposure mode = 1 (manual)
+    - set exposure time = 10 (1 ms)
+    - set gain = 65
+    - set gain = 40
+    - set exposure time = 5 (0.5 ms)
+    - set gain = 30
+    - read from vendor control 4.11: text 'CRSL0000000'
+* Possible switch commands (writes that don't just ask for data): vendor control 1.20 data 00 00 00 00 cf 02 ff 04 01 00 (dev2). Try them on the Commands tab.
+
+Devices enumerated during capture (devnum -> VID:PID):
+  dev 1: 8087:0029
+  dev 2: 05e3:0749
+  dev 3: 1a40:0101
+  dev 4: bcdc:000a
+  dev 5: bcdc:000b
+  dev 130: 0408:a061
+  Creality 3D scanner (e.g. CR-Scan Lizard): dev [4, 5]  (use --dev to focus on them)
+
+=== Control transfers (unique, first-seen order) ===
+  t=   3.321s dev4 IN  class  if  req=0x85 val=0x0a00 idx=0x0400 GET_LEN (UVC? sel=10 unit=4 if=0) len=2 count=1 [okx1]
+        data: 0800
+  t=   3.322s dev4 OUT class  if  req=0x01 val=0x0a00 idx=0x0400 SET_CUR (UVC? sel=10 unit=4 if=0) len=8 count=1 [okx1]
+        data: 02c200fe14000000
+  t=   3.323s dev4 IN  class  if  req=0x85 val=0x0b00 idx=0x0400 GET_LEN (UVC? sel=11 unit=4 if=0) len=2 count=3 [okx3]
+        data: 0800
+  t=   3.325s dev4 IN  class  if  req=0x81 val=0x0b00 idx=0x0400 GET_CUR (UVC? sel=11 unit=4 if=0) len=8 count=3 [okx3]
+        data: 000000104352534c
+        data: 3030303030303000
+        data: ffffffffbbbbbbbb
+  t=   3.541s dev2 IN  class  if  req=0x87 val=0x1400 idx=0x0100 GET_DEF (UVC? sel=20 unit=1 if=0) len=10 count=1 [okx1]
+        data: 00000000cf02ff040100
+  t=   3.542s dev2 OUT class  if  req=0x01 val=0x1400 idx=0x0100 SET_CUR (UVC? sel=20 unit=1 if=0) len=10 count=1 [okx1]
+        data: 00000000cf02ff040100
+  t=  21.343s dev4 IN  class  if  req=0x81 val=0x0100 idx=0x0001 GET_CUR (UVC? sel=1 unit=0 if=1) len=26 count=18 [okx18]
+        data: 0000010140420f00000000000000000020000060090000060000
+        data: 0000020180841e00000000000000000020000060090000060000
+        data: 0000010240420f000000000000000000200000201c0000060000
+  t=  21.345s dev4 OUT class  if  req=0x01 val=0x0100 idx=0x0001 SET_CUR (UVC? sel=1 unit=0 if=1) len=26 count=12 [okx12]
+        data: 0000020180841e00000000000000000020000060090000000000
+        data: 0000010240420f00000000000000000020000060090000000000
+        data: 0000010240420f000000000000000000200000201c0000000000
+        data: 0000020180841e000000000000000000200000201c0000000000
+  t=  21.349s dev4 IN  class  if  req=0x83 val=0x0100 idx=0x0001 GET_MAX (UVC? sel=1 unit=0 if=1) len=26 count=6 [okx6]
+        data: 0000020180841e00000000000000000020000060090000060000
+        data: 0000010240420f000000000000000000200000201c0000060000
+  t=  21.350s dev4 IN  class  if  req=0x82 val=0x0100 idx=0x0001 GET_MIN (UVC? sel=1 unit=0 if=1) len=26 count=6 [okx6]
+        data: 0000020180841e00000000000000000020000060090000060000
+        data: 0000010240420f000000000000000000200000201c0000060000
+  t=  21.359s dev4 OUT class  if  req=0x01 val=0x0200 idx=0x0001 SET_CUR (UVC? sel=2 unit=0 if=1) len=26 count=6 [okx6]
+        data: 0000020180841e00000000000000000020000060090000060000
+        data: 0000010240420f000000000000000000200000201c0000060000
+  t=  22.596s dev4 IN  class  if  req=0x81 val=0x0400 idx=0x0100 GET_CUR (UVC? sel=4 unit=1 if=0) len=4 count=20 [okx20]
+        data: 3c000000
+        data: 0a000000
+        data: 05000000
+  t=  22.597s dev4 IN  class  if  req=0x81 val=0x0200 idx=0x0100 GET_CUR (UVC? sel=2 unit=1 if=0) len=1 count=25 [okx25]
+        data: 01
+  t=  22.602s dev4 OUT class  if  req=0x01 val=0x0200 idx=0x0100 SET_CUR (UVC? sel=2 unit=1 if=0) len=1 count=5 [okx5]
+        data: 01
+  t=  22.606s dev4 OUT class  if  req=0x01 val=0x0400 idx=0x0100 SET_CUR (UVC? sel=4 unit=1 if=0) len=4 count=5 [okx5]
+        data: 0a000000
+        data: 05000000
+  t=  22.611s dev4 IN  class  if  req=0x81 val=0x0400 idx=0x0200 GET_CUR (UVC? sel=4 unit=2 if=0) len=2 count=20 [okx20]
+        data: 1000
+        data: 4100
+        data: 2800
+        data: 1e00
+  t=  22.614s dev4 OUT class  if  req=0x01 val=0x0400 idx=0x0200 SET_CUR (UVC? sel=4 unit=2 if=0) len=2 count=5 [okx5]
+        data: 4100
+        data: 2800
+        data: 1e00
+  (20 standard request types hidden; --all-ctrl to show)
+
+=== Data endpoints ===
+  dev4 EP 0x81 IN : 2400 transfers, 22.70 MB, 0.6 MB/s over 40.2s
+     sizes: 1536B x1031, 2144B x61, 17720B x5, 23360B x5
+     first 4 bytes: 0c8c0000 x28, 0c8c76c0 x7, 0c8d477d x7
+     Looks like standard UVC payload headers on every transfer.
+     sample t=21.524s 1536B: 0c8c0000000053052100f1000c8c00000000a60c2100f1000c8c00000000f9132100f1000c8c000000004c1b2100f100
+     sample t=21.540s 1536B: 0c8c00000000ceae240001010c8c0000000020b6240001010c8c0000000073bd240001010c8c00000000c6c424000101
+     sample t=21.556s 1536B: 0c8c000000004658280011010c8c00000000995f280011010c8c00000000ec66280011010c8c000000003f6e28001101
+     Video: 380 frames rebuilt from the UVC headers, ~9.6 fps, MJPEG 1280x720, 26992-459520 bytes per frame
+       -> clean sample frames (largest, middle, smallest) in C:/Users/<user>/WhoAreYoUSB/usb_capture_20261015_172326_out\samples/
+     [UVC-headers-stripped] JPEG: 379 images, 26992-73864 B
+     [UVC-headers-stripped]   JPEGs are back-to-back with no extra header (plain MJPEG).
+  dev2 EP 0x02 OUT: 189 transfers, 0.01 MB, 0.0 MB/s over 62.4s
+     sizes: 31B x189
+     first 4 bytes: 55534243 x189
+     sample t=0.063s 31B: 55534243205a3e070000000000000600000000000000000000000000000000
+     sample t=0.063s 31B: 55534243205a3e071200000080000c03000000120000000000000000000000
+     sample t=0.064s 31B: 55534243203a7e080000000000010600000000000000000000000000000000
+  dev2 EP 0x81 IN : 252 transfers, 0.00 MB, 0.0 MB/s over 62.4s
+     sizes: 13B x189, 18B x63
+     first 4 bytes: 55534253 x189, 70000200 x63
+     sample t=0.063s 13B: 55534253205a3e070000000001
+     sample t=0.063s 18B: 700002000000000a000000003a0000000000
+     sample t=0.064s 13B: 55534253205a3e070000000000
+     Frame guess (header prefix 70000200): 57 bytes/frame, 100% consistent over 63 frames, ~1.0 fps
+       matches: no common resolution (compressed or packed?)
+  dev3 EP 0x81 IN : 4 transfers, 0.00 MB, 0.0 MB/s over 22.2s, 3 errors
+     sizes: 1B x4
+     first 4 bytes: 
+     sample t=3.271s 1B: 02
+     sample t=3.307s 1B: 04
+     sample t=21.315s 1B: 02
+  dev2 EP 0x87: no data, 1 failed transfer(s)
+  dev4 EP 0x83: no data, 7 failed transfer(s)
+  dev5 EP 0x83: no data, 1 failed transfer(s)
+
+=== Calibration data sent by the device ===
+  vendor control reads dev4 req 0x81 (5 read(s), 41 B) -> C:/Users/<user>/WhoAreYoUSB/usb_capture_20261015_172326_out\calibration\ctrl_in_dev4_req81.bin
+     nothing calibration-like recognised (could still be a packed/encrypted blob)
+  small IN stream dev2 EP 0x81 (3591 B) -> C:/Users/<user>/WhoAreYoUSB/usb_capture_20261015_172326_out\dev2_ep81_in_bulk.bin
+     nothing calibration-like recognised (could still be a packed/encrypted blob)
+  No calibration found over USB. JM Studio downloads a per-serial calibration file on first connect; find it on disk with:  whoareyousb.py find-calib <wine prefix or VM share>
+
+=== Hints ===
+  Raw endpoint streams written to C:/Users/<user>/WhoAreYoUSB/usb_capture_20261015_172326_out/ (.bin + .idx.csv with per-transfer offsets).

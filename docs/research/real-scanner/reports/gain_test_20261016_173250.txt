@@ -1,0 +1,15 @@
+Lizard gain test 2026-10-16 17:32 (lizard_camera 0.3.1-wip)
+Scanner: CRSL*******
+Light watched: White ring (camera B)
+Seen by eye: did its brightness change? Couldn't tell
+Conclusion: No answer this time; try in a darker room.
+Picture: lit pictures went from 1 to 62 (+4198%) as it went 16 to 128
+
+       gain  lit_frame_level  dark_frame_level
+         16              1.5               1.4
+         40             14.7              14.3
+         65             30.0              29.5
+         96             47.3              46.3
+        128             62.4              61.6
+
+The picture always gets brighter with exposure and gain; only your eye can tell what the ring itself did.

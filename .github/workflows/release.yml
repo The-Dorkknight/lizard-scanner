@@ -1,0 +1,33 @@
+name: release
+# Publishes a pre-release whenever the version in the app file is one that has
+# no release yet: on a push to main that changes the app, on a pushed v* tag,
+# or when started by hand from the Actions tab. No tag has to be made by hand.
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+    paths: [lizard_scanner.py]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: release
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: v
+        run: |
+          V=$(python3 lizard_scanner.py --version | head -1 | sed -E 's/.* v([^ ]+) .*/\1/')
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+      - name: Create release if new
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="v${{ steps.v.outputs.version }}"
+          if gh release view "$TAG" >/dev/null 2>&1; then echo "exists"; exit 0; fi
+          # Everything in the repository, launchers with their executable bits.
+          git archive --format=zip --prefix=lizard-scanner/ -o "lizard-scanner-$TAG.zip" HEAD
+          gh release create "$TAG" "lizard-scanner-$TAG.zip" --prerelease --generate-notes --title "Lizard Scanner $TAG (work in progress)"

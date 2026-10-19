@@ -1,0 +1,4 @@
+# Line endings the double-click launchers need, whatever system the files are edited on.
+*.sh       text eol=lf
+*.command  text eol=lf
+*.bat      text eol=crlf

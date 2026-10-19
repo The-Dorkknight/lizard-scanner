@@ -1,0 +1,28 @@
+# Made by the app on first run
+/lz_env/
+bootstrap.log
+settings.json
+*.log
+
+# Your scans, recordings, calibrations and test reports
+/scans/
+/captures/
+/reports/
+/calibration/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+/build/
+
+# Secrets / signing keys, never commit
+*.jks
+*.keystore
+*.pem
+.env
+
+# OS junk
+.DS_Store
+Thumbs.db

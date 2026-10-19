@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lizard Scanner</title>
+<meta name="description" content="Standalone app for the Creality CR-Scan Lizard: live infrared picture, automagic light buttons, a wall-test depth calibration. Source-available · Non-commercial. Work in progress.">
+<link rel="icon" href="images/favicon-64.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<style>
+:root {
+  --bg: #f4f1ea; --panel: #ffffff; --ink: #1f1c18; --muted: #6a6257; --line: #ddd5c8;
+  --accent: #2e7d4f; --accent-soft: #e2f0e7; --btn-ink: #ffffff; --warn: #8a4b00; --warn-soft: #f8e8d2; --wood: #68401f;
+  --f: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #16130f; --panel: #211d18; --ink: #ece2cc; --muted: #a79d89; --line: #3a332b;
+  --accent: #6fcf97; --accent-soft: #1d3326; --btn-ink: #0f2418; --warn: #f0b363; --warn-soft: #3a2a14; --wood: #a5713f; } }
+:root[data-theme="dark"] {
+  --bg: #16130f; --panel: #211d18; --ink: #ece2cc; --muted: #a79d89; --line: #3a332b;
+  --accent: #6fcf97; --accent-soft: #1d3326; --btn-ink: #0f2418; --warn: #f0b363; --warn-soft: #3a2a14; --wood: #a5713f; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--f); }
+.wip { background: var(--warn-soft); color: var(--warn); text-align: center; font-weight: 700; padding: 10px 16px;
+  border-bottom: 1px solid var(--line); letter-spacing: .02em; }
+main { max-width: 1020px; margin: 0 auto; padding: 32px 16px 56px; display: grid; gap: 44px; }
+.hero { display: grid; gap: 24px; align-items: center; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .hero { grid-template-columns: 5fr 7fr; } }
+.title { display: flex; gap: 16px; align-items: center; }
+.title img { width: 72px; height: 72px; border-radius: 18px; }
+h1 { font-size: clamp(32px, 6vw, 46px); line-height: 1.05; margin: 0; }
+h2 { font-size: 24px; margin: 0 0 14px; }
+p { margin: 0 0 12px; max-width: 64ch; }
+.lede { font-size: 18px; color: var(--muted); }
+.shot { width: 100%; height: auto; border-radius: 12px; border: 6px solid var(--wood); display: block; }
+.cards { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.card h3 { margin: 0 0 6px; font-size: 17px; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+.gallery { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+figure { margin: 0; }
+figcaption { color: var(--muted); font-size: 14px; margin-top: 6px; }
+ul, ol { margin: 0; padding-left: 1.3em; max-width: 68ch; }
+li { margin: 4px 0; }
+.not { background: var(--panel); border: 1px dashed var(--line); border-radius: 12px; padding: 16px 20px; }
+code { background: var(--accent-soft); padding: 1px 6px; border-radius: 5px; font-size: 14px; word-break: break-word; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.btn { display: inline-block; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: var(--btn-ink);
+  text-decoration: none; font-weight: 600; }
+.btn.alt { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+a { color: var(--accent); }
+footer { color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 18px; }
+.note { font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wip">WORK IN PROGRESS: MANY FEATURES MAY BE BROKEN · 0.5.2-wip · paused for a month or two (cleaning won)</div>
+<main>
+  <section class="hero">
+    <div>
+      <div class="title"><img src="images/icon-512.png" alt=""><h1>Lizard Scanner</h1></div>
+      <p class="lede" style="margin-top:16px">A standalone app for the Creality CR-Scan Lizard 3D scanner. Live infrared picture, automagic buttons instead of sliders, and a five-minute wall test that turns the scanner into a depth camera. No vendor software needed.</p>
+      <div class="btns">
+        <a class="btn" id="repo" href="https://github.com/The-Dorkknight/lizard-scanner">Source on GitHub</a>
+        <a class="btn alt" id="rel" href="https://github.com/The-Dorkknight/lizard-scanner/releases">Download</a>
+        <a class="btn alt" href="https://The-Dorkknight.github.io/down-the-lizard-hole/">Read the paper</a>
+      </div>
+      <p class="lede" style="margin-top:14px;font-size:.95rem">Paused for a month or two: calibration turned out to be more boring than cleaning. The story so far is in <a href="https://The-Dorkknight.github.io/down-the-lizard-hole/">Down the Lizard Hole</a>.</p>
+    </div>
+    <img class="shot" src="images/free-lizard.jpg" alt="A lizard revolutionary waving a FREE LIZARD flag on a barricade" width="1408" height="768">
+  </section>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="cards">
+      <div class="card"><h3>Starts by itself</h3><p>Plug the Lizard in and the picture appears (Linux). The tag on the picture shows the frame rate and how much of the view shows the projector's stripes.</p></div>
+      <div class="card"><h3>Light without sliders</h3><p>AUTO-TUNE, three presets, Dimmer and Brighter. The ring's flash never goes past Creality's own 1 ms unless you allow it.</p></div>
+      <div class="card"><h3>Diagnostics</h3><p>Ten checks, from the USB link and room infrared to how flat a wall comes out, plus one zip to attach to a bug report.</p></div>
+      <div class="card"><h3>Wall test</h3><p>Point it at a plain wall at a few measured distances. The app follows how the projector's stripes slide, fits a depth calibration by itself from the third wall, and keeps everything in one folder you can zip in one click.</p></div>
+      <div class="card"><h3>Live depth</h3><p>Distance colours with relief shading, and one click to save the view as a point cloud (.ply).</p></div>
+      <div class="card"><h3>Capture and play back</h3><p>Every saved picture is stamped with its time, camera, exposure, gain and every other setting, plus your notes; plays back as if the scanner were there.</p></div>
+      <div class="card"><h3>Ready for Scantastic</h3><p>The Lizard speaks the same camera language as Scantastic's other scanners, so it can move in later.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Screens</h2>
+    <div class="gallery">
+      <figure><img class="shot" src="images/main-window.webp" alt="Live infrared picture with the light buttons" width="1180" height="780" loading="lazy"><figcaption>Live picture and the light buttons</figcaption></figure>
+      <figure><img class="shot" src="images/wall-test.webp" alt="The wall test window after five walls" width="1180" height="780" loading="lazy"><figcaption>The wall test after five walls</figcaption></figure>
+      <figure><img class="shot" src="images/dots-only.webp" alt="The stripe pattern with the background removed" width="1180" height="780" loading="lazy"><figcaption>Pattern only: what depth is made from</figcaption></figure>
+      <figure><img class="shot" src="images/scanner-off.webp" alt="TV static while no scanner is plugged in" width="1180" height="780" loading="lazy"><figcaption>Waiting for the scanner</figcaption></figure>
+    </div>
+    <p class="note" style="margin-top:12px">All screenshots are of the app's built-in simulated scanner, not a real Lizard.</p>
+  </section>
+
+  <section>
+    <h2>What does not exist yet</h2>
+    <div class="not">
+      <ul>
+        <li>A run on a real Lizard with this app (the camera control underneath has worked on one, in Who are yoUSB?).</li>
+        <li>Full 3D scans joined from many views: that is Scantastic's job once the Lizard moves in.</li>
+        <li>Lens distortion correction; Creality's own factory calibration.</li>
+        <li>Tested Windows and macOS camera paths (written, never run).</li>
+        <li>Colour: the Lizard's pictures are infrared.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Install</h2>
+    <ol>
+      <li>Download the repository (green <b>Code</b> button, <b>Download ZIP</b>) or the latest pre-release, and unzip it.</li>
+      <li>Double-click <code>Lizard-Scanner-Linux.sh</code> (choose Run), <code>Lizard-Scanner-Windows.bat</code> or <code>Lizard-Scanner-Mac.command</code> (right-click, Open, the first time).</li>
+      <li>The first start installs numpy and Pillow into its own folder. On Linux you may need <code>sudo apt install python3-tk python3-venv v4l-utils</code> once.</li>
+      <li>No scanner? Choose <b>Simulated scanner</b> in the Source box.</li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>Required Notice: Copyright Matthew Armstrong (<a href="https://github.com/The-Dorkknight">The-Dorkknight</a>). Licensed under the PolyForm Noncommercial License 1.0.0: source-available, free for non-commercial use, commercial use needs permission. Provided as is, with no warranty and no liability.</p>
+    <p>Not made by, endorsed by or affiliated with Creality. CR-Scan Lizard is Creality's product name.</p>
+  </footer>
+</main>
+<script>
+// Links follow the repository this page is served from, so they survive renames and forks.
+(function () {
+  try {
+    var host = location.hostname, owner = "The-Dorkknight", repo = "lizard-scanner";
+    if (/\.github\.io$/.test(host)) {
+      owner = host.split(".")[0];
+      var first = location.pathname.split("/").filter(Boolean)[0];
+      if (first) repo = first;
+    }
+    var base = "https://github.com/" + owner + "/" + repo;
+    document.getElementById("repo").href = base;
+    document.getElementById("rel").href = base + "/releases";
+  } catch (e) { /* keep the default links */ }
+})();
+</script>
+</body>
+</html>

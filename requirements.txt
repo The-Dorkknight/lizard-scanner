@@ -1,0 +1,5 @@
+# The app installs these itself into lz_env/ on first run. This file is for CI and developers.
+numpy>=1.22
+Pillow>=10.0
+# Windows and macOS only (the camera path there):
+# opencv-python>=4.8

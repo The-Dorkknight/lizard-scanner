@@ -1,0 +1,18 @@
+CR-Scan Lizard wall calibration (rough), 2026-10-18 20:48
+Scanner CRSL*******, mode mjpg, lizard_camera 0.5.0-wip
+
+5 walls, reference at 280 mm. The stripes slide along x.
+Fit: K 38943 to 52405 px·mm across the picture, optical centre -42 mm from the glass, 2.09 px RMS; worst wall 1.9 mm off.
+Focal length 827 px (guessed).
+Every wall came out deeper on the left, more so further away: the scanner was probably turned about 1.7 degrees to the wall. Fine for a rough calibration; square up for a better one.
+
+distance_mm  matched  shift_px  error_mm  spread_mm  tilt_mm
+      180.0      34%     143.2      0.69       0.65    -1.19
+      230.0      70%      55.8     -1.63       0.77    -2.49
+      280.0   (reference wall)
+      330.0      86%     -36.3      1.88       1.78    -3.87
+      380.0      81%     -59.9     -1.55       2.27    -5.19
+
+error_mm: median depth the fit gives back for that wall, minus the tape measure.
+spread_mm: how much that wall's depth varies over the picture (robust).
+tilt_mm: right third minus left third (a wall at an angle shows here).

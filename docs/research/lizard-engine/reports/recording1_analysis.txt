@@ -1,0 +1,106 @@
+Capture: C:/Users/<user>/WhoAreYoUSB/usb_capture_20261015_164538.pcap  packets: 1901  duration: 54.8s
+Capture metadata: bus None scanner devnum None note: -
+
+Devices enumerated during capture (devnum -> VID:PID):
+  dev 1: 8087:0029
+  dev 2: 0408:a061
+  dev 3: bcdc:000a
+  dev 4: bcdc:000b
+  dev 130: 1a40:0101
+  Creality 3D scanner (e.g. CR-Scan Lizard): dev [3, 4]  (use --dev to focus on them)
+
+=== Control transfers (unique, first-seen order) ===
+  t=  19.590s dev3 IN  class  if  req=0x85 val=0x0a00 idx=0x0400 GET_LEN (UVC? sel=10 unit=4 if=0) len=2 count=2 [okx2]
+        data: 0800
+  t=  19.591s dev3 OUT class  if  req=0x01 val=0x0a00 idx=0x0400 SET_CUR (UVC? sel=10 unit=4 if=0) len=8 count=2 [okx2]
+        data: 02c200fe14000000
+  t=  19.592s dev3 IN  class  if  req=0x85 val=0x0b00 idx=0x0400 GET_LEN (UVC? sel=11 unit=4 if=0) len=2 count=6 [okx6]
+        data: 0800
+  t=  19.594s dev3 IN  class  if  req=0x81 val=0x0b00 idx=0x0400 GET_CUR (UVC? sel=11 unit=4 if=0) len=8 count=6 [okx6]
+        data: 000000104352534c
+        data: 3030303030303000
+        data: ffffffffbbbbbbbb
+  t=  19.601s dev4 IN  class  if  req=0x85 val=0x0a00 idx=0x0400 GET_LEN (UVC? sel=10 unit=4 if=0) len=2 count=1 [okx1]
+        data: 0800
+  t=  19.602s dev4 OUT class  if  req=0x01 val=0x0a00 idx=0x0400 SET_CUR (UVC? sel=10 unit=4 if=0) len=8 count=1 [okx1]
+        data: 02c200fe14000000
+  t=  19.603s dev4 IN  class  if  req=0x85 val=0x0b00 idx=0x0400 GET_LEN (UVC? sel=11 unit=4 if=0) len=2 count=3 [okx3]
+        data: 0800
+  t=  19.605s dev4 IN  class  if  req=0x81 val=0x0b00 idx=0x0400 GET_CUR (UVC? sel=11 unit=4 if=0) len=8 count=3 [okx3]
+        data: ffffffffffffffff
+        data: ffffffffbbbbbbbb
+  t=  19.810s dev2 IN  class  if  req=0x87 val=0x1400 idx=0x0100 GET_DEF (UVC? sel=20 unit=1 if=0) len=10 count=3 [okx3]
+        data: 00000000cf02ff040100
+  t=  19.811s dev2 OUT class  if  req=0x01 val=0x1400 idx=0x0100 SET_CUR (UVC? sel=20 unit=1 if=0) len=10 count=3 [okx3]
+        data: 00000000cf02ff040100
+  t=  27.613s dev3 IN  class  if  req=0x81 val=0x0100 idx=0x0001 GET_CUR (UVC? sel=1 unit=0 if=1) len=26 count=18 [okx18]
+        data: 0000010140420f00000000000000000020000060090000060000
+        data: 0000020180841e00000000000000000020000060090000060000
+        data: 0000010240420f000000000000000000200000201c0000060000
+  t=  27.615s dev3 OUT class  if  req=0x01 val=0x0100 idx=0x0001 SET_CUR (UVC? sel=1 unit=0 if=1) len=26 count=12 [okx12]
+        data: 0000020180841e00000000000000000020000060090000000000
+        data: 0000010240420f00000000000000000020000060090000000000
+        data: 0000010240420f000000000000000000200000201c0000000000
+        data: 0000020180841e000000000000000000200000201c0000000000
+  t=  27.618s dev3 IN  class  if  req=0x83 val=0x0100 idx=0x0001 GET_MAX (UVC? sel=1 unit=0 if=1) len=26 count=6 [okx6]
+        data: 0000020180841e00000000000000000020000060090000060000
+        data: 0000010240420f000000000000000000200000201c0000060000
+  t=  27.619s dev3 IN  class  if  req=0x82 val=0x0100 idx=0x0001 GET_MIN (UVC? sel=1 unit=0 if=1) len=26 count=6 [okx6]
+        data: 0000020180841e00000000000000000020000060090000060000
+        data: 0000010240420f000000000000000000200000201c0000060000
+  t=  27.642s dev3 OUT class  if  req=0x01 val=0x0200 idx=0x0001 SET_CUR (UVC? sel=2 unit=0 if=1) len=26 count=6 [okx6]
+        data: 0000020180841e00000000000000000020000060090000060000
+        data: 0000010240420f000000000000000000200000201c0000060000
+  t=  28.868s dev3 IN  class  if  req=0x81 val=0x0400 idx=0x0100 GET_CUR (UVC? sel=4 unit=1 if=0) len=4 count=8 [okx8]
+        data: 3c000000
+        data: 0a000000
+  t=  28.870s dev3 IN  class  if  req=0x81 val=0x0200 idx=0x0100 GET_CUR (UVC? sel=2 unit=1 if=0) len=1 count=10 [okx10]
+        data: 01
+  t=  28.874s dev3 OUT class  if  req=0x01 val=0x0200 idx=0x0100 SET_CUR (UVC? sel=2 unit=1 if=0) len=1 count=2 [okx2]
+        data: 01
+  t=  28.878s dev3 OUT class  if  req=0x01 val=0x0400 idx=0x0100 SET_CUR (UVC? sel=4 unit=1 if=0) len=4 count=2 [okx2]
+        data: 0a000000
+  t=  28.884s dev3 IN  class  if  req=0x81 val=0x0400 idx=0x0200 GET_CUR (UVC? sel=4 unit=2 if=0) len=2 count=8 [okx8]
+        data: 1000
+        data: 4100
+  t=  28.887s dev3 OUT class  if  req=0x01 val=0x0400 idx=0x0200 SET_CUR (UVC? sel=4 unit=2 if=0) len=2 count=2 [okx2]
+        data: 4100
+  (17 standard request types hidden; --all-ctrl to show)
+
+=== Data endpoints ===
+  dev3 EP 0x81 IN : 1577 transfers, 26.83 MB, 1.0 MB/s over 27.1s
+     sizes: 1536B x683, 2144B x40, 3024B x3, 11112B x3
+     first 4 bytes: 0c8c0000 x28, 0c8c2f91 x7, 0c8d004e x7
+     Looks like standard UVC payload headers on every transfer.
+     sample t=27.798s 1536B: 0c8c00000000ee6a1f005e060c8c0000000041721f005e060c8c0000000094791f005e060c8c00000000e7801f005e06
+     sample t=27.814s 1536B: 0c8c00000000681423006e060c8c00000000bb1b23006e060c8c000000000e2323006e060c8c00000000612a23006e06
+     sample t=27.830s 1536B: 0c8c00000000e3bd26007e060c8c0000000036c526007e060c8c0000000089cc26007e060c8c00000000dcd326007e06
+     Frame guess (header prefix 0c8c0000): 1536 bytes/frame, 96% consistent over 28 frames, ~1.0 fps
+       matches: no common resolution (compressed or packed?)
+     [raw] JPEG: 246 images, 10172-213624 B
+     [raw]   5556-byte gap before each JPEG (151/245) = vendor frame header. sample: 0c8c8b3f5f0025eaa300c0000c8c8b3f5f0078f1a300c0000c8c8b3f5f00cbf8a300c1000c8d64a6a3001d00a400c100
+     [raw] gzip: 1 signature(s) -> compressed payload (depth maps are often zlib/LZ4/zstd)
+     [raw] zlib: 195 signature(s) -> compressed payload (depth maps are often zlib/LZ4/zstd)
+       -> saved 4 image(s) to C:/Users/<user>/WhoAreYoUSB/usb_capture_20261015_164538_out\samples/
+     [UVC-headers-stripped] JPEG: 246 images, 10160-213588 B
+     [UVC-headers-stripped]   5508-byte gap before each JPEG (120/245) = vendor frame header. sample: 0c8c8b3f5f0025eaa300c0000c8c8b3f5f0078f1a300c0000c8c8b3f5f00cbf8a300c1000c8d64a6a3001d00a400c100
+     [UVC-headers-stripped] gzip: 1 signature(s) -> compressed payload (depth maps are often zlib/LZ4/zstd)
+     [UVC-headers-stripped] zlib: 195 signature(s) -> compressed payload (depth maps are often zlib/LZ4/zstd)
+       -> saved 4 image(s) to C:/Users/<user>/WhoAreYoUSB/usb_capture_20261015_164538_out\samples/
+  dev130 EP 0x81 IN : 6 transfers, 0.00 MB, 0.0 MB/s over 20.2s, 4 errors
+     sizes: 1B x6
+     first 4 bytes: 
+     sample t=19.536s 1B: 02
+     sample t=19.576s 1B: 04
+     sample t=21.728s 1B: 02
+  dev2 EP 0x87: no data, 3 failed transfer(s)
+  dev3 EP 0x83: no data, 9 failed transfer(s)
+  dev4 EP 0x83: no data, 3 failed transfer(s)
+
+=== Calibration data sent by the device ===
+  vendor control reads dev3 req 0x81 (5 read(s), 41 B) -> C:/Users/<user>/WhoAreYoUSB/usb_capture_20261015_164538_out\calibration\ctrl_in_dev3_req81.bin
+     nothing calibration-like recognised (could still be a packed/encrypted blob)
+  No calibration found over USB. JM Studio downloads a per-serial calibration file on first connect; find it on disk with:  whoareyousb.py find-calib <wine prefix or VM share>
+
+=== Hints ===
+  Raw endpoint streams written to C:/Users/<user>/WhoAreYoUSB/usb_capture_20261015_164538_out/ (.bin + .idx.csv with per-transfer offsets).

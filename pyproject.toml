@@ -1,0 +1,14 @@
+[project]
+name = "lizard-scanner"
+version = "0.4.0"
+description = "Standalone app for the Creality CR-Scan Lizard 3D scanner: live picture, automagic light, wall-test depth calibration (work in progress)"
+readme = "README.md"
+license = "PolyForm-Noncommercial-1.0.0"
+license-files = ["LICENSE.md"]
+requires-python = ">=3.8"
+authors = [{ name = "Matthew Armstrong", email = "The-Dorkknight@users.noreply.github.com" }]
+dependencies = ["numpy>=1.22", "Pillow>=10.0", "opencv-python>=4.8; platform_system != 'Linux'"]
+
+[project.urls]
+Homepage = "https://github.com/The-Dorkknight/lizard-scanner"
+Issues = "https://github.com/The-Dorkknight/lizard-scanner/issues"
